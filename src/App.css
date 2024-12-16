@@ -1,0 +1,40 @@
+#root {
+  box-sizing: border-box;
+}
+
+.logo {
+  will-change: filter;
+  transition: filter 300ms;
+  cursor: pointer;
+  padding: 0 1.5rem;
+  -webkit-transition: filter 300ms;
+  -moz-transition: filter 300ms;
+  -ms-transition: filter 300ms;
+  -o-transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #1e58c4aa);
+  -webkit-filter: drop-shadow(0 0 2em #1e58c4aa);
+}
+
+.logo svg {
+  font-size: 30px;
+  color: #3661be;
+}
+
+tr:nth-child(even) {
+  background-color: #364343;
+}
+
+th {
+  background-color: #1a367b;
+  padding: 10px;
+}
+
+td {
+  padding: 5px;
+}
+
+.date {
+  padding: 0 1.5rem;
+}
