@@ -38,3 +38,8 @@ td {
 .date {
   padding: 0 1.5rem;
 }
+
+.ag-header-cell-label {
+  display: flex;
+  justify-content: center;
+}

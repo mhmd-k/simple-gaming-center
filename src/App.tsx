@@ -9,12 +9,33 @@ import { Period } from "./types";
 import { useInvoices } from "./zustand/invoicesStore";
 import animationData from "./lotties/controller-lottie.json";
 import Lottie from "react-lottie";
+import { useTablesStore } from "./zustand/tablesStore";
 
 function App() {
   const setInvoces = useInvoices((state) => state.setInvoices);
   const invoices = useInvoices((state) => state.invoices);
 
+  const tables = useTablesStore((state) => state.tables);
+  const setTables = useTablesStore((state) => state.setTables);
+
   const [loading, setLoading] = useState(true);
+
+  console.log(tables);
+
+  useEffect(() => {
+    setTables(
+      tables.map((e) => {
+        const start = localStorage.getItem(`table-${e.table}`);
+        if (start) {
+          return {
+            ...e,
+            start: new Date(start),
+          };
+        }
+        return e;
+      })
+    );
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,7 +49,6 @@ function App() {
     const today = formatDateToDMY(new Date());
 
     const periods = localStorage.getItem(today);
-
 
     if (periods) {
       setInvoces(

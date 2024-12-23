@@ -1,5 +1,5 @@
 import { Period } from "../types";
-import { formatTimeToCounter } from "../utils";
+import { formatTime } from "../utils";
 import Counter from "./Counter";
 
 interface TableProps extends Period {
@@ -31,7 +31,7 @@ function Table({
     >
       <div>Table {table}</div>
 
-      {start && !end && <Counter start={start} />}
+      {start && !end && <Counter start={start} table={table} />}
 
       {!start && (
         <div>
@@ -50,9 +50,7 @@ function Table({
       {start && end && (
         <span>
           Time spent:{" "}
-          {formatTimeToCounter(
-            Math.round((end.getTime() - start.getTime()) / 1000)
-          )}
+          {formatTime(Math.round((end.getTime() - start.getTime()) / 1000))}
         </span>
       )}
 

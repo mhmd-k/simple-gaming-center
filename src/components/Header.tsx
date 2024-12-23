@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { formatDateToDMY } from "../utils";
 import { IoMdPaper } from "react-icons/io";
 import { IoGameController } from "react-icons/io5";
-import { SlScreenDesktop } from "react-icons/sl";
 
 function Header() {
   return (
@@ -19,12 +18,7 @@ function Header() {
       </Link>
       <ul style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
         <li>
-          <Link to="/">
-            <SlScreenDesktop /> Tables
-          </Link>
-        </li>
-        <li>
-          <Link to="/invoices">
+          <Link to="/invoices" style={{ textDecoration: "underline" }}>
             <IoMdPaper /> Invoices
           </Link>
         </li>

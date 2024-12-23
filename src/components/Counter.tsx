@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatTimeToCounter } from "../utils";
 
-function Counter({ start }: { start: Date }) {
+function Counter({ start, table }: { start: Date; table: number }) {
   const [time, setTime] = useState<number>(
     Math.floor((new Date().getTime() - start.getTime()) / 1000)
   );
@@ -12,7 +12,7 @@ function Counter({ start }: { start: Date }) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [time]);
+  }, [table, time]);
 
   return <div>{formatTimeToCounter(time)}</div>;
 }

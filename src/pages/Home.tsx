@@ -14,12 +14,16 @@ function Home() {
   const setInvoices = useInvoices((state) => state.setInvoices);
 
   const handleStart = (id: string) => {
-    setTables(
-      tables.map((e) => (e.id === id ? { ...e, start: new Date() } : e))
-    );
+    const start = new Date();
+    const tableNumber = tables.find((e) => e.id === id)?.table;
+    localStorage.setItem(`table-${tableNumber}`, start.toString());
+    setTables(tables.map((e) => (e.id === id ? { ...e, start: start } : e)));
   };
 
   const handleStop = (id: string) => {
+    const tableNumber = tables.find((e) => e.id === id)?.table;
+    localStorage.removeItem(`table-${tableNumber}`);
+
     const endDate = new Date();
 
     let newPeriod = tables.find((e) => e.id === id);
@@ -52,10 +56,15 @@ function Home() {
   };
 
   const handleStartAgain = (id: string) => {
+    const start = new Date();
+
+    const tableNumber = tables.find((e) => e.id === id)?.table;
+    localStorage.setItem(`table-${tableNumber}`, start.toString());
+
     setTables(
       tables.map((e) =>
         e.id === id
-          ? { ...e, id: uuidv4(), start: new Date(), end: null, price: 0 }
+          ? { ...e, id: uuidv4(), start: start, end: null, price: 0 }
           : e
       )
     );

@@ -25,7 +25,6 @@ export function formatDateToDMY(date: Date): string {
 export function getSecondsBetweenDates(date1: Date, date2: Date): number {
   const differenceInMilliseconds = Math.abs(date2.getTime() - date1.getTime());
 
-
   return Math.round(differenceInMilliseconds / 1000);
 }
 
@@ -39,4 +38,26 @@ export function formatTimeFromDate(date: Date): string {
   const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+export function formatTime(seconds: number): string {
+  if (seconds < 3600) {
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}min`;
+  } else {
+    const hours = Math.floor(seconds / 3600);
+    return `${hours}h`;
+  }
+}
+
+export function formatTimeOfDay(date: Date): string {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  // Convert to 12-hour format and determine AM/PM
+  const period = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour clock
+  const formattedMinutes = minutes.toString().padStart(2, "0"); // Ensure 2 digits
+
+  return `${formattedHours}:${formattedMinutes} ${period}`;
 }
