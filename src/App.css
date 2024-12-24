@@ -43,3 +43,21 @@ td {
   display: flex;
   justify-content: center;
 }
+
+.excel-download-btn {
+  width: 100%;
+  max-width: 250px;
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease-in-out;
+  background-color: #009688;
+  margin: auto;
+}
+
+.excel-download-btn:hover {
+  background-color: #28c3b5;
+}

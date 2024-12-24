@@ -71,7 +71,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className="container">
       {tables.map((table) => (
         <Table
           key={table.id}

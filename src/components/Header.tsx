@@ -11,6 +11,7 @@ function Header() {
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
+        boxShadow: "0 0 3px 0 #101010",
       }}
     >
       <Link className="logo" to="/">
@@ -18,7 +19,7 @@ function Header() {
       </Link>
       <ul style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
         <li>
-          <Link to="/invoices" style={{ textDecoration: "underline" }}>
+          <Link to="/invoices">
             <IoMdPaper /> Invoices
           </Link>
         </li>
