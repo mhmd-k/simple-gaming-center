@@ -9,7 +9,7 @@ import type {
 } from "ag-grid-community";
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { themeQuartz, colorSchemeDark } from "ag-grid-community";
-import { formatTimeOfDay } from "../utils";
+import { formatDateToDMY, formatTimeOfDay } from "../utils";
 import type { CustomCellRendererProps } from "ag-grid-react";
 import DownloadIcon from "@mui/icons-material/Download";
 import { ExcelExportModule } from "ag-grid-enterprise";
@@ -27,6 +27,12 @@ function Invoices() {
 
   const [colDefs] = useState<ColDef[]>([
     { field: "table", headerName: "Table" },
+    {
+      field: "start",
+      headerName: "Date",
+      valueFormatter: (params: ValueFormatterParams) =>
+        formatDateToDMY(params.value),
+    },
     {
       field: "start",
       headerName: "Start time",

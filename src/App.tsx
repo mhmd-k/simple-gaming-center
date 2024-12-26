@@ -51,13 +51,11 @@ function App() {
 
     if (periods) {
       setInvoces(
-        periods
-          ? (JSON.parse(periods) as Period[]).map((e) => ({
-              ...e,
-              start: e.start ? new Date(e.start) : null,
-              end: e.end ? new Date(e.end) : null,
-            }))
-          : []
+        (JSON.parse(periods) as Period[]).map((e) => ({
+          ...e,
+          start: e.start ? new Date(e.start) : null,
+          end: e.end ? new Date(e.end) : null,
+        }))
       );
     }
   }, []);
