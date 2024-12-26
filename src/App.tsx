@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Invoices from "./pages/Invoices";
-import "./App.css";
 import Layout from "./components/Layout";
 import { useEffect, useState } from "react";
 import { formatDateToDMY } from "./utils";

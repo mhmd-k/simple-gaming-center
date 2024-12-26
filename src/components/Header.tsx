@@ -1,31 +1,39 @@
 import { Link } from "react-router-dom";
 import { formatDateToDMY } from "../utils";
-import { IoMdPaper } from "react-icons/io";
-import { IoGameController } from "react-icons/io5";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import { Container, Stack } from "@mui/material";
 
 function Header() {
   return (
-    <div
+    <header
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: "100%",
-        boxShadow: "0 0 3px 0 #101010",
+        boxShadow: "rgb(68 68 68) 0px 0px 3px 0px",
       }}
     >
-      <Link className="logo" to="/">
-        <IoGameController />
-      </Link>
-      <ul style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-        <li>
-          <Link to="/invoices">
-            <IoMdPaper /> Invoices
-          </Link>
-        </li>
-      </ul>
-      <div className="date">{formatDateToDMY(new Date())}</div>
-    </div>
+      <Container
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Link className="logo" to="/">
+          <SportsEsportsIcon />
+        </Link>
+        <ul style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+          <li>
+            <Link to="/invoices">
+              <Stack flexDirection="row" gap={1} alignItems="center">
+                <ReceiptIcon />
+                Invoices
+              </Stack>
+            </Link>
+          </li>
+        </ul>
+        <div className="date">{formatDateToDMY(new Date())}</div>
+      </Container>
+    </header>
   );
 }
 

@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { Period } from "../types";
 import { formatTime } from "../utils";
 import Counter from "./Counter";
@@ -8,7 +9,7 @@ interface TableProps extends Period {
   handleStartAgain: (id: string) => void;
 }
 
-function Table({
+function GamingTable({
   id,
   table,
   handleStart,
@@ -22,11 +23,13 @@ function Table({
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         gap: "20px",
-        borderBottom: "1px solid black",
-        justifyContent: "center",
+        borderRight: "1px solid white",
+        justifyContent: "space-between",
         alignItems: "center",
         padding: "10px",
+        width: "100%",
       }}
     >
       <div>Table {table}</div>
@@ -35,17 +38,34 @@ function Table({
 
       {!start && (
         <div>
-          <button onClick={() => handleStart(id)}>Start</button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => handleStart(id)}
+          >
+            Start
+          </Button>
         </div>
       )}
 
       {start && !end && (
         <div>
-          <button onClick={() => handleStop(id)}>Stop</button>
+          <Button
+            variant="contained"
+            color="warning"
+            onClick={() => handleStop(id)}
+          >
+            Stop
+          </Button>
         </div>
       )}
 
-      {price ? <span>{Math.round(price / 10) * 10} S.P</span> : null}
+      {price ? (
+        <span style={{ fontWeight: "800" }}>
+          {" "}
+          {Math.round(price / 10) * 10} S.P
+        </span>
+      ) : null}
 
       {start && end && (
         <span>
@@ -55,10 +75,16 @@ function Table({
       )}
 
       {price ? (
-        <button onClick={() => handleStartAgain(id)}>Start Again</button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleStartAgain(id)}
+        >
+          Start Again
+        </Button>
       ) : null}
     </div>
   );
 }
 
-export default Table;
+export default GamingTable;
